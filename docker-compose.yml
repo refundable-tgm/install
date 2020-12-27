@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  mongo:
+    image: 'mongo'
+    container_name: 'mongo-database'
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - './volumes/mongo/:/data/db/'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongodb_root_username
+      - MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongodb_root_password
+      - MONGO_INITDB_DATABASE: admin
+      - MONGO_USERNAME_FILE: /run/secrets/mongodb_username
+      - MONGO_PASSWORD_FILE: /run/secrets/mongodb_password
+      - MONGO_DATABASE: refundable
+    secrets:
+      - mongodb_root_username
+      - mongodb_root_password
+      - mongodb_username
+      - mongodb_password
+  rest:
+    build: src/huginn/
+    container_name: 'rest-api-backend'
+    ports:
+      - '8080:8080'
+    environment:
+      - MONGO_USERNAME_FILE: /run/secrets/mongodb_username
+      - MONGO_PASSWORD_FILE: /run/secrets/mongodb_password
+      - MONGO_DATABASE: refundable
+    secrets:
+      - mongodb_username
+      - mongodb_password
+  web:
+    build: src/web/
+    container_name: 'frontend-nginx-webapp'
+    ports:
+      - '80:80'
+      - '443:443'
+
+secrets:
+  mongodb_root_username:
+    file: config/mongodb_root_username
+  mongodb_root_password:
+    file: config/mongodb_root_password
+  mongodb_username:
+    file: config/mongodb_username
+  mongodb_password:
+    file: config/mongodb_password
