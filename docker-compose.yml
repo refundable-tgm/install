@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   mongo:
-    image: 'mongo'
+    image: images/mongo/
     container_name: 'mongo-database'
     restart: always
     ports:
