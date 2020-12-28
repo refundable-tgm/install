@@ -116,10 +116,10 @@ sub_purge() {
       sub_stop
       sub_clean
       rm -rf config images volumes docker-compose.yml README.md refundable.sh src .git
-      echo "Refundable was removed."
+      printf "Refundable was removed.\n"
       ;;
     *)
-      echo "Aborted."
+      printf "Aborted.\n"
       exit 0
       ;;
   esac
