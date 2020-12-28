@@ -131,7 +131,6 @@ sub_clean() {
 
 # Purge command
 sub_purge() {
-  check_installed
   read -rp "Refundable will be removed completely. Continue? [y|N] " y
   printf "\n"
   case $y in
