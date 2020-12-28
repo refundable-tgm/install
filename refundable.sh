@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# checks whether install was already executed
 check_installed() {
   if [ ! -d "src/" ]; then
     printf "Please install the application before executing other commands.\n"
