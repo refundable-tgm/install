@@ -1,5 +1,12 @@
 #!/bin/bash
 
+check_installed() {
+  if [ ! -d "src/" ]; then
+    printf "Please install the application before executing other commands.\n"
+    exit 1
+  fi
+}
+
 # Help Command
 sub_help() {
   printf "Usage:    %s <subcommand> \n" "$(basename "$0")"
@@ -53,6 +60,7 @@ sub_install() {
 
 # Start command
 sub_start() {
+  check_installed
   printf "Refundable is starting.\n"
   docker-compose up --build -d > /dev/null
   printf "Refundable started.\n"
@@ -60,6 +68,7 @@ sub_start() {
 
 # Stop command
 sub_stop() {
+  check_installed
   printf "Refundable is stopping.\n"
   docker-compose down > /dev/null
   printf "Refundable stopped.\n"
@@ -67,6 +76,7 @@ sub_stop() {
 
 # Restart command
 sub_restart() {
+  check_installed
   sub_start
   sub_stop
 }
@@ -81,6 +91,7 @@ clean() {
 
 # Update command
 sub_update() {
+  check_installed
   printf "Backend (huginn) will be updated, if available.\n"
   cd src/huginn
   git pull --quiet origin master > /dev/null
@@ -103,6 +114,7 @@ sub_update() {
 
 # Clean subcommand
 sub_clean() {
+  check_installed
   read -rp "All dangling components will be removed. Continue? [y|N]" y
   printf "\n"
   case $y in
@@ -118,6 +130,7 @@ sub_clean() {
 
 # Purge command
 sub_purge() {
+  check_installed
   read -rp "Refundable will be removed completely. Continue? [y|N] " y
   printf "\n"
   case $y in
