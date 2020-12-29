@@ -1,9 +1,9 @@
 #!/bin/bash
 
-mongo -- "$MONGO_INITDB_DATABASE" << EOF
+mongo -- "$MONGO_DATABASE" << EOF
     var rootUser = '$(cat "$MONGO_INITDB_ROOT_USERNAME_FILE")';
     var rootPassword = '$(cat "$MONGO_INITDB_ROOT_PASSWORD_FILE")';
-    var admin = db.getSiblingDB('admin');
+    var admin = db.getSiblingDB("$MONGO_INITDB_DATABASE");
     admin.auth(rootUser, rootPassword);
 
     var user = '$(cat "$MONGO_USERNAME_FILE")';

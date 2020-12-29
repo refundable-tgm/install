@@ -116,7 +116,7 @@ sub_update() {
 # Clean subcommand
 sub_clean() {
   check_installed
-  read -rp "All dangling components will be removed. Continue? [y|N]" y
+  read -rp "All dangling components will be removed. Continue? [y|N] " y
   printf "\n"
   case $y in
     "Y" | "y" )
@@ -136,7 +136,7 @@ sub_purge() {
   case $y in
     "Y" | "y")
       sub_stop
-      sub_clean
+      clean
       rm -rf config images volumes docker-compose.yml README.md refundable.sh src .git
       printf "Refundable was removed.\n"
       ;;
