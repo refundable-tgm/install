@@ -2,6 +2,8 @@
 
 ## Quickstart
 
+### a) Cloning via git
+
 To install Refundable `git` is required (further instructions can be viewed [here](#dependencies))
 
 ```bash
@@ -10,6 +12,17 @@ cd refundable
 git clone https://github.com/refundable-tgm/install .
 sudo chmod +x refundable.sh
 ```
+
+### b) Downloading via GitHub
+
+Another way to install Refundable is to download the latest release of this repository. The releases can be found [here](https://github.com/refundable-tgm/install/releases).
+The downloaded archive is then unpacked using either the command `unzip <file>` or `tar xfv <file>` depending on which archive was downloaded.
+To make the unpacked script then executable the following command must be executed:
+```bash
+sudo chmod +x refundable.sh
+```
+
+### Installing
 
 To install the required files the script has to be executed as follows:
 ```bash
@@ -23,7 +36,7 @@ If Docker and Docker-Compose are already installed, you are strongly advised to 
 
 ## Dependencies
 
-To download this installer git repository `git` has to be installed. For the uncommon case that `git` is not preinstalled on your local machine, you can easily install it using the following commands:
+To download repositories via `git clone`, `git` has to be installed. For the uncommon case that `git` is not preinstalled on your local machine, you can easily install it using the following commands:
 ```bash
 sudo apt update
 sudo apt install git
@@ -44,3 +57,11 @@ The following subcommands are available, when using the `refundable.sh` script:
 |    clean     |             cleans all dangling components             |
 |    purge     |             removes refundable completely              |
 |  uninstall   |                     alias to purge                     |
+
+# Installing Process
+
+During the installing process, the script will prompt for user credentials (see [here](config/README.md)) and will download repositories containing the source code of the back- and frontend.
+
+These repositories are the following:
+ - [huginn](https://github.com/refundable-tgm/huginn) - the backend
+ - [web](https://github.com/refundable-tgm/web) - the frontend
