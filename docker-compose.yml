@@ -25,6 +25,8 @@ services:
     container_name: 'rest-api-backend'
     ports:
       - '8080:8080'
+    volumes:
+    - './volumes/secrets/:/vol/secrets/'
     environment:
       MONGO_USERNAME_FILE: '/run/secrets/mongodb_username'
       MONGO_PASSWORD_FILE: '/run/secrets/mongodb_password'
