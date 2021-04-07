@@ -27,6 +27,7 @@ services:
       - '8080:8080'
     volumes:
     - './volumes/secrets/:/vol/secrets/'
+    - './volumes/files/:/vol/files/'
     environment:
       MONGO_USERNAME_FILE: '/run/secrets/mongodb_username'
       MONGO_PASSWORD_FILE: '/run/secrets/mongodb_password'
