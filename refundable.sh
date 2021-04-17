@@ -58,6 +58,7 @@ sub_install() {
   echo "$userpassword" > config/mongodb_password
   read -rp "Input the URL (without port, this is will be 8080 by default):" url
   printf '{\n\t"url":"%s"\n}' "$url" > src/web/src/data.json
+  echo "$url" > volumes/files/.url
   printf "\nInstallation completed.\n"
 }
 
