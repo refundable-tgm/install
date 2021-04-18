@@ -141,7 +141,7 @@ sub_purge() {
     "Y" | "y")
       sub_stop
       clean
-      rm -rf config images volumes docker-compose.yml README.md refundable.sh src .git
+      rm -rf config images volumes docker-compose.yml README.md refundable.sh src .git docker-install.sh
       printf "Refundable was removed.\n"
       ;;
     *)
