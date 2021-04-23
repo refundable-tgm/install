@@ -85,8 +85,8 @@ sub_stop() {
 # Restart command
 sub_restart() {
   check_installed
+  sub_stop  
   sub_start
-  sub_stop
 }
 
 # Clean functionality
