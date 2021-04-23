@@ -62,7 +62,7 @@ sub_install() {
   echo "$url" > volumes/files/.url
   printf "\n"
   read -rp "Input the name of the initial super user: " superuser
-  echo "$superuser" > volumes/files/.url
+  echo "$superuser" > volumes/files/.superuser
   printf "\nInstallation completed.\n"
 }
 
